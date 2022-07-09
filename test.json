@@ -1,0 +1,16 @@
+[
+    {
+        "id": 1,
+        "name": "John",
+        "yearRelease": 2000,
+        "isRecommended" : true,
+        "rating": 5.3
+    },
+    {
+        "id": 2,
+        "name": "John 2",
+        "yearRelease": 2002,
+        "isRecommended" : false,
+        "rating": 1.3
+    }
+]
