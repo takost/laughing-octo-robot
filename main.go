@@ -1,19 +1,25 @@
 package main
 
 import (
+	"fmt"
+
 	"github.com/takost/laughing-octo-robot/parsers"
 	"github.com/takost/laughing-octo-robot/serviceuploader"
 )
 
 func main() {
 	filePaths := []string{
-		"/workspaces/laughing-octo-robot/test.json",
+		"./test.json",
 	}
 
-	movies, err := parsers.ParseContent(filePaths[0])
-	if err != nil {
-		panic(err)
+	for _, filePath := range filePaths {
+		movies, err := parsers.ParseContent(filePath)
+		if err != nil {
+			panic(err)
+		}
+		err = serviceuploader.UploadMovies(movies)
+		if err != nil {
+			fmt.Println(err)
+		}
 	}
-
-	serviceuploader.UploadMovies(movies)
 }
