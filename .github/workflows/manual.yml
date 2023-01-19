@@ -6,6 +6,6 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Hello world action step
-        uses: takost/write-args-action@v1.1
+        uses: takost/write-args-action@v1.2
         with:
           args: hello 'there'
