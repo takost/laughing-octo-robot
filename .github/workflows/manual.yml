@@ -16,4 +16,4 @@ jobs:
       - name: Failing
         uses: docker://alpine:latest
         with:
-          args: sh -c echo done''done
+          args: sh -c echo done 'hello' done
