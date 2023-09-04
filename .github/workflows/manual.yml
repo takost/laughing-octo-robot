@@ -6,7 +6,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
     - name: Checkout
-      uses: actions/checkout@4dafa43b526f3e34af838be95f642fb5369e34ff
+      uses: actions/checkout@v4
     - uses: takost/write-args-action@main
       with:
         args: "hello"
