@@ -3,8 +3,8 @@ on: [ workflow_dispatch ]
 
 jobs:
   test:
-    runs-on: ubuntu-latest
+    runs-on: self-hosted
     steps:
     - name: Checkout
-      uses: actions/checkout@e1b7fe15cfa2060cffca56b01dd7d6eb7b6a777f
+      uses: actions/checkout@v4
     
