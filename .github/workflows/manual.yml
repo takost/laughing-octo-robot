@@ -2,9 +2,17 @@ name: Manual workflow
 on: [ workflow_dispatch ]
 
 jobs:
-  test:
-    runs-on: self-hosted
+  hello_world_job:
+    runs-on: ubuntu-latest
+    name: A job to say hello
     steps:
-    - name: Checkout
-      uses: takost/checkout@f47d45e3d08d607c98ff2e1a9f8aa71cd72de728
+      - uses: actions/checkout@v4
+      - id: foo
+        uses: actions/hello-world-composite-action@v1
+        with:
+          who-to-greet: 'Mona the Octocat'
+      - run: echo random-number "$RANDOM_NUMBER"
+        shell: bash
+        env:
+          RANDOM_NUMBER: ${{ steps.foo.outputs.random-number }}
     
