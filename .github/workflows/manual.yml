@@ -6,7 +6,7 @@ jobs:
     runs-on: self-hosted
     name: A job to say hello
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v3
       - run: echo random-number "$RANDOM_NUMBER"
         shell: bash
         env:
