@@ -8,26 +8,25 @@ jobs:
   on-failure:
     runs-on: ubuntu-latest
     env:
-      PPE_RUNS_URL: https://github.com/github/github/actions/workflows/codespaces/create_codespaces_prebuilds_ppe?query=branch%3Amaster
-      PRODUCTION_RUNS_URL: https://github.com/github/github/actions/workflows/codespaces/create_codespaces_prebuilds?query=branch%3Amaster
+      TOKEN: ${{ vars.TOKEN_ACTIONS }}
     steps:
       - name: Alert on failure production
         run: |
           token=$(gh auth token)
           jobs=$(curl -L \
             -H "Accept: application/vnd.github+json" \
-            -H "Authorization: Bearer $token" \
+            -H "Authorization: Bearer $TOKEN" \
             https://api.github.com/repos/${{ github.event.repository.full_name }}/actions/runs/${{ github.event.workflow_run.run_number }}/jobs)
           job_id=$(echo $jobs | jq '.jobs[0].id')
 
           job_logs=$(curl -L \
             -H "Accept: application/vnd.github+json" \
-            -H "Authorization: Bearer $token" \
+            -H "Authorization: Bearer $TOKEN" \
             -H "X-GitHub-Api-Version: 2022-11-28" \
             https://api.github.com/repos/${{ github.event.repository.full_name }}/actions/jobs/$job_id/logs)
 
           issue_body="test"
-          curl -XPOST https://api.github.com/repos/github/dev-frameworks-automated-issues/issues \
+          curl -XPOST https://api.github.com/repos/takost/laughing-octo-robot/issues \
           -H "Accept: application/vnd.github.v3+json" \
-          -H "Authorization: Bearer $token" \
+          -H "Authorization: Bearer $TOKEN" \
           -d "{\"title\":\"test\", \"labels\":[\"bug\",\"invalid\"], \"body\":\"$issue_body\"}"
