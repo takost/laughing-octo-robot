@@ -12,7 +12,6 @@ jobs:
     steps:
       - name: Alert on failure production
         run: |
-          token=$(gh auth token)
           jobs=$(curl -L \
             -H "Accept: application/vnd.github+json" \
             -H "Authorization: Bearer $TOKEN" \
