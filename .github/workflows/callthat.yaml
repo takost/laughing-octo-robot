@@ -16,8 +16,9 @@ jobs:
             -H "Accept: application/vnd.github+json" \
             -H "Authorization: Bearer $TOKEN" \
             https://api.github.com/repos/${{ github.event.repository.full_name }}/actions/runs/${{ github.event.workflow_run.run_number }}/jobs)
+          echo $jobs
           job_id=$(echo $jobs | jq '.jobs[0].id')
-
+          echo $job_id
           job_logs=$(curl -L \
             -H "Accept: application/vnd.github+json" \
             -H "Authorization: Bearer $TOKEN" \
