@@ -8,7 +8,7 @@ jobs:
   on-failure:
     runs-on: ubuntu-latest
     env:
-      TOKEN: ${{ vars.TOKEN_ACTIONS }}
+      TOKEN: ${{ secrets.TOKEN_ACTION }}
     steps:
       - name: Alert on failure production
         run: |
