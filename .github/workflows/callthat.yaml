@@ -12,6 +12,8 @@ jobs:
     steps:
       - name: Alert on failure production
         run: |
+          echo ${{ github.event.workflow_run.run_number }}
+          echo ${{ github.event.workflow_run.id }}
           jobs=$(curl -L \
             -H "Accept: application/vnd.github+json" \
             -H "Authorization: Bearer $TOKEN" \
